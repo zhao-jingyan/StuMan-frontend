@@ -56,17 +56,26 @@ const onFinishFailed = () => {
             @finish="onFinish"
             @finishFailed="onFinishFailed"
     >
+        <a-form-item label="Name:" name="name" :rules="[{ required: true, message: 'Please input your name!' }]">
+            <a-input v-model:value="signInfo.name" />
+        </a-form-item>
+        <a-form-item label="Nickname:">
+            <a-input v-model:value="signInfo.nickname" />
+        </a-form-item>
         <a-form-item label="You are:">
-            <a-radio-group v-model:value="loginInfo.type">
+            <a-radio-group v-model:value="signInfo.type">
                 <a-radio value="Student">Student</a-radio>
                 <a-radio value="Teacher">Teacher</a-radio>
             </a-radio-group>
         </a-form-item>
-        <a-form-item label="ID">
-            <a-input v-model:value="loginInfo.id" />
+        <a-form-item label="ID" name='id' :rules="[{ required: true, message: 'Please input your ID!' }]">
+            <a-input v-model:value="signInfo.id" />
         </a-form-item>
-        <a-form-item label="Password">
-            <a-input v-model:value="loginInfo.password" />
+        <a-form-item label="Password" name='password' :rules="[{ required: true, message: 'Please input your password!' }]">
+            <a-input v-model:value="signInfo.password" />
+        </a-form-item>
+        <a-form-item label="Class">
+            <a-input v-model:value="signInfo.class" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">

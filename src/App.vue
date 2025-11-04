@@ -16,11 +16,4 @@
   min-height: 100vh;
   padding: 20px;
 }
-
-.login-container :deep(.ant-form) {
-  border: 1px solid #d9d9d9;
-  border-radius: 6px;
-  padding: 24px;
-  background: #fff;
-}
 </style>

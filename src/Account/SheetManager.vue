@@ -7,7 +7,7 @@
 
 <template>
     <div>
-        <a-tabs v-model:activeKey="activeKey">
+        <a-tabs v-model:activeKey="activeKey" centered="true" size="large" >
             <a-tab-pane key="1" tab="Login">
                 <LoginSheet/>
             </a-tab-pane>
