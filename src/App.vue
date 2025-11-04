@@ -1,11 +1,26 @@
-<script setup></script>
+<script setup>
+  import SheetManager from './Account/SheetManager.vue';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="login-container">
+    <SheetManager/>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-container :deep(.ant-form) {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 24px;
+  background: #fff;
+}
+</style>
