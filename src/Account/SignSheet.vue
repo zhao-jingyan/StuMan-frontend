@@ -47,6 +47,9 @@ const onFinishFailed = () => {
 
 }
 
+const isStudent = () => {
+    return signInfo.type == 'Student'
+}
 </script>
 
 <template>
@@ -56,17 +59,14 @@ const onFinishFailed = () => {
             @finish="onFinish"
             @finishFailed="onFinishFailed"
     >
+    <a-form-item label="You are:">
+        <a-radio-group v-model:value="signInfo.type">
+            <a-radio value="Student">Student</a-radio>
+            <a-radio value="Teacher">Teacher</a-radio>
+        </a-radio-group>
+    </a-form-item>
         <a-form-item label="Name:" name="name" :rules="[{ required: true, message: 'Please input your name!' }]">
             <a-input v-model:value="signInfo.name" />
-        </a-form-item>
-        <a-form-item label="Nickname:">
-            <a-input v-model:value="signInfo.nickname" />
-        </a-form-item>
-        <a-form-item label="You are:">
-            <a-radio-group v-model:value="signInfo.type">
-                <a-radio value="Student">Student</a-radio>
-                <a-radio value="Teacher">Teacher</a-radio>
-            </a-radio-group>
         </a-form-item>
         <a-form-item label="ID" name='id' :rules="[{ required: true, message: 'Please input your ID!' }]">
             <a-input v-model:value="signInfo.id" />
@@ -74,12 +74,15 @@ const onFinishFailed = () => {
         <a-form-item label="Password" name='password' :rules="[{ required: true, message: 'Please input your password!' }]">
             <a-input v-model:value="signInfo.password" />
         </a-form-item>
-        <a-form-item label="Class">
+        <a-form-item v-if=" signInfo.type == 'Student' " label="Nickname:">
+            <a-input v-model:value="signInfo.nickname" />
+        </a-form-item>
+        <a-form-item v-if=" signInfo.type == 'Student' " label="Class">
             <a-input v-model:value="signInfo.class" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" @click="onSubmit">Submit</a-button>
+            <a-button type="primary" @click="onSubmit">Sign Up</a-button>
         </a-form-item>
     </a-form>
 </template>

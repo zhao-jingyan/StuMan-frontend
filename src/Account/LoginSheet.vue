@@ -61,7 +61,7 @@ const onFinishFailed = () => {
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" @click="onSubmit">Submit</a-button>
+            <a-button type="primary" @click="onSubmit">Login</a-button>
         </a-form-item>
     </a-form>
 </template>
