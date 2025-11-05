@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import { UnwrapRef, reactive } from 'vue';
+import { UnwrapRef, reactive, computed} from 'vue';
 
 /* 声明TS接口 */
 interface loginInfo {
@@ -27,16 +27,18 @@ const onSubmit = () => {
     console.log('----------------------')
 }
 
-const onFinish = () => {
+const onFinish = (values: any) => {
     /* in real website, this maybe a redirect to index */
-    console.log('Login Finished!')
+    console.log('Login Finished')
 }
 
-const onFinishFailed = () => {
-    /* in real website, this is an alert */
-    console.log('Login Failed!')
-
+const onFinishFailed = (errorInfo: any) => {
+    console.log('Login Failed')
 }
+
+const disableSubmit = computed (() => {
+    return !(loginInfo.id && loginInfo.password)
+})
 
 </script>
 
@@ -46,7 +48,7 @@ const onFinishFailed = () => {
             :wrapper-col="{ span: 16 }" 
             @finish="onFinish"
             @finishFailed="onFinishFailed"
-    >
+            >
         <a-form-item label="You are:">
             <a-radio-group v-model:value="loginInfo.type">
                 <a-radio value="Student">Student</a-radio>
@@ -57,11 +59,12 @@ const onFinishFailed = () => {
             <a-input v-model:value="loginInfo.id" />
         </a-form-item>
         <a-form-item label="Password">
-            <a-input v-model:value="loginInfo.password" />
+            <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
         <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" @click="onSubmit">Login</a-button>
+            <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
+
 </template>

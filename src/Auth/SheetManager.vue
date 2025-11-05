@@ -7,7 +7,7 @@
 
 <template>
     <div style="padding-left: 40%; padding-right: 40%; padding-top:15% ;">
-        <a-tabs v-model:activeKey="activeKey" centered="true" size="large" >
+        <a-tabs v-model:activeKey="activeKey" size="large" centered>
             <a-tab-pane key="1" tab="Login">
                 <LoginSheet/>
             </a-tab-pane>
