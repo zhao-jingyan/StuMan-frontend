@@ -1,8 +1,23 @@
-import type { UserInfo } from "@/types"
+import type { UserInfo, LoginInfo} from "@/types"
 
 export const userService = {
-    register
+    register,
+    login
 }
+
+async function login(info : LoginInfo){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(info)
+    };
+
+    const response = await fetch (`https://mockurl:4000/users/authenticate`,requestOptions)
+    return handleResponse(response);
+}
+
+
+
 
 async function register(user : UserInfo) {
     const requestOptions = {

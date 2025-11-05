@@ -2,16 +2,12 @@
 
 import { UnwrapRef, reactive, computed} from 'vue';
 
-/* 声明TS接口 */
-interface loginInfo {
-    id: string;
-    type: string;
-    password: string
-}
+import type { LoginInfo } from '@/types/index'
+import { userService } from '@/services/userService'
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
-const loginInfo: UnwrapRef<loginInfo> = reactive({
+const loginInfo: UnwrapRef<LoginInfo> = reactive({
     id: '',
     type: 'Student',
     password: '',
@@ -19,12 +15,14 @@ const loginInfo: UnwrapRef<loginInfo> = reactive({
 
 const onSubmit = () => {
     /* a console test logic */
-    console.log('----------------------')
+    console.log('----------------------');
     console.log('submit!');
-    console.log('id:' + loginInfo.id)
-    console.log('type:' + loginInfo.type)
-    console.log('password:' + loginInfo.password)
-    console.log('----------------------')
+    console.log('id:' + loginInfo.id);
+    console.log('type:' + loginInfo.type);
+    console.log('password:' + loginInfo.password);
+    console.log('----------------------');
+
+    userService.login(loginInfo);
 }
 
 const disableSubmit = computed (() => {
@@ -48,7 +46,7 @@ const disableSubmit = computed (() => {
             <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item style="text-align: right">
+        <a-form-item >
             <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>

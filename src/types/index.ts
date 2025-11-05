@@ -6,3 +6,9 @@ export interface UserInfo {
     password: string;
     class: string;
 }
+
+export interface LoginInfo {
+    id: string;
+    type: string;
+    password: string
+}

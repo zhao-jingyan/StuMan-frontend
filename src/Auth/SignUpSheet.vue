@@ -2,7 +2,7 @@
 
 import { UnwrapRef, reactive, computed, ref } from 'vue';
 import type { UserInfo } from '@/types/index'
-import { userService } from '../../services/userService';
+import { userService } from '@/services/userService';
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
