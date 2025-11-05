@@ -1,20 +1,11 @@
 <script lang="ts" setup>
 
 import { UnwrapRef, reactive, computed, ref} from 'vue';
-
-/* 声明TS接口 */
-interface signInfo {
-    id: string;
-    name: string;
-    nickname: string;
-    type: string;
-    password: string;
-    class: string;
-}
+import type { UserInfo } from '@/types/index'
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
-const signInfo: UnwrapRef<signInfo> = reactive({
+const signInfo: UnwrapRef<UserInfo> = reactive({
     type: 'Student',
     name:'',
     id: '',

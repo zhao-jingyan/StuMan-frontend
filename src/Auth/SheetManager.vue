@@ -1,7 +1,7 @@
 <script lang="ts" setup>
     import { ref } from 'vue';
-    import LoginSheet from './LoginSheet.vue';
-    import SignSheet from './SignSheet.vue';
+    import LoginSheet from '@/auth/LoginSheet.vue';
+    import SignSheet from '@/auth/SignSheet.vue';
     const activeKey = ref('1');
 </script>
 
