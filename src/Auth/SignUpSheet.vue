@@ -1,16 +1,17 @@
 <script lang="ts" setup>
 
-import { UnwrapRef, reactive, computed, ref} from 'vue';
+import { UnwrapRef, reactive, computed, ref } from 'vue';
 import type { UserInfo } from '@/types/index'
+import { userService } from '../../services/userService';
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
 const signInfo: UnwrapRef<UserInfo> = reactive({
     type: 'Student',
-    name:'',
+    name: '',
     id: '',
     password: '',
-    nickname:'',
+    nickname: '',
     class: '',
 })
 
@@ -27,6 +28,8 @@ const onSubmit = () => {
     console.log('nickname:' + signInfo.nickname)
     console.log('class:' + signInfo.class)
     console.log('----------------------')
+
+    userService.register(signInfo)
 }
 
 const disableSubmit = computed(() => {
@@ -40,42 +43,38 @@ const validateStatus = computed(() => signInfo.password == checkPassword.value ?
 </script>
 
 <template>
-    <a-form :model="signInfo" 
-            :label-col="{ span: 8 }" 
-            :wrapper-col="{ span: 16 }" 
-    >
-    <a-form-item label="You are:">
-        <a-radio-group v-model:value="signInfo.type">
-            <a-radio value="Student">Student</a-radio>
-            <a-radio value="Teacher">Teacher</a-radio>
-        </a-radio-group>
-    </a-form-item>
+    <a-form :model="signInfo">
+        <a-form-item label="You are:">
+            <a-radio-group v-model:value="signInfo.type">
+                <a-radio value="Student">Student</a-radio>
+                <a-radio value="Teacher">Teacher</a-radio>
+            </a-radio-group>
+        </a-form-item>
         <a-form-item label="Name:" required>
             <a-input v-model:value="signInfo.name" />
         </a-form-item>
         <a-form-item label="ID" required>
             <a-input v-model:value="signInfo.id" />
         </a-form-item>
-        <a-form-item label="Password" required >
-            <a-input-password v-model:value="signInfo.password" v-model:visible="visible"/>
+        <a-form-item label="Password" required>
+            <a-input-password v-model:value="signInfo.password" v-model:visible="visible" />
         </a-form-item>
         <!--维护一个变量进行二次检查，不影响数据模型-->
-        <a-form-item 
-            label="Password check" 
-            :validate-status="validateStatus"
-            :help=" validateStatus == 'error' ? 'Passwords do not match!' : '' "
-            required >
-            <a-input-password v-model:value="checkPassword" v-model:visible="visible"/>
-        </a-form-item>     
-        <a-form-item v-if=" signInfo.type == 'Student' " label="Nickname:">
+        <a-form-item label="Password check" :validate-status="validateStatus"
+            :help="validateStatus == 'error' ? 'Passwords do not match!' : ''" required>
+            <a-input-password v-model:value="checkPassword" v-model:visible="visible" />
+        </a-form-item>
+        <a-form-item v-if="signInfo.type == 'Student'" label="Nickname:">
             <a-input v-model:value="signInfo.nickname" />
         </a-form-item>
-        <a-form-item v-if=" signInfo.type == 'Student' " label="Class">
+        <a-form-item v-if="signInfo.type == 'Student'" label="Class">
             <a-input v-model:value="signInfo.class" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Sign Up</a-button>
+        <a-form-item style="text-align: right">
+            <a-button type="primary" @click="onSubmit" :disabled="disableSubmit" >
+                Sign Up
+            </a-button>
         </a-form-item>
     </a-form>
 </template>

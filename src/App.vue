@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import SheetManager from './auth/SheetManager.vue';
   import Profile from './manage/Profile.vue';
-  import List from './manage/List.vue';
+  import List from './manage/StudentsList.vue';
   import type { UserInfo } from '@/types/index';
 
   const testInfo : UserInfo = {
@@ -42,6 +42,5 @@
 </script>
 
 <template>
-    <Profile :user-info="testInfo" />
-    <List :data="mockList"/>
+  <router-view />
 </template>

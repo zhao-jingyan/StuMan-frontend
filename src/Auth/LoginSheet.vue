@@ -34,10 +34,7 @@ const disableSubmit = computed (() => {
 </script>
 
 <template>
-    <a-form :model="loginInfo" 
-            :label-col="{ span: 8 }" 
-            :wrapper-col="{ span: 16 }" 
-            >
+    <a-form :model="loginInfo">
         <a-form-item label="You are:">
             <a-radio-group v-model:value="loginInfo.type">
                 <a-radio value="Student">Student</a-radio>
@@ -51,7 +48,7 @@ const disableSubmit = computed (() => {
             <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+        <a-form-item style="text-align: right">
             <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
