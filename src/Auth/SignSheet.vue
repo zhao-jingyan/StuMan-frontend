@@ -38,17 +38,6 @@ const onSubmit = () => {
     console.log('----------------------')
 }
 
-const onFinish = () => {
-    /* in real website, this maybe a redirect to index */
-    console.log('Login Finished!')
-}
-
-const onFinishFailed = () => {
-    /* in real website, this is an alert */
-    console.log('Login Failed!')
-
-}
-
 const disableSubmit = computed(() => {
     return !(signInfo.id && signInfo.name && signInfo.password && signInfo.password === checkPassword.value)
 })
@@ -63,8 +52,6 @@ const validateStatus = computed(() => signInfo.password == checkPassword.value ?
     <a-form :model="signInfo" 
             :label-col="{ span: 8 }" 
             :wrapper-col="{ span: 16 }" 
-            @finish="onFinish"
-            @finishFailed="onFinishFailed"
     >
     <a-form-item label="You are:">
         <a-radio-group v-model:value="signInfo.type">

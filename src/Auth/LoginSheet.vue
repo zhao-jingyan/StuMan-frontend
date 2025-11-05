@@ -27,15 +27,6 @@ const onSubmit = () => {
     console.log('----------------------')
 }
 
-const onFinish = (values: any) => {
-    /* in real website, this maybe a redirect to index */
-    console.log('Login Finished')
-}
-
-const onFinishFailed = (errorInfo: any) => {
-    console.log('Login Failed')
-}
-
 const disableSubmit = computed (() => {
     return !(loginInfo.id && loginInfo.password)
 })
@@ -46,8 +37,6 @@ const disableSubmit = computed (() => {
     <a-form :model="loginInfo" 
             :label-col="{ span: 8 }" 
             :wrapper-col="{ span: 16 }" 
-            @finish="onFinish"
-            @finishFailed="onFinishFailed"
             >
         <a-form-item label="You are:">
             <a-radio-group v-model:value="loginInfo.type">
@@ -66,5 +55,4 @@ const disableSubmit = computed (() => {
             <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
-
 </template>
