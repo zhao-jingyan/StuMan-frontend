@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import router from '@/router/router'
 import type { UserInfo } from '@/types/index'
 
-const goToDetail = (string : string) => {
-    console.log("route push: /" + string)
+const goToDetail = (string: string) => {
+    router.push('/profile')
 }
 
 const fetchStudents = () => {
@@ -38,17 +39,19 @@ const data: UserInfo[] = [
 </script>
 
 <template>
-    <a-list item-layout="horizontal" :data-source="data">
-        <template #renderItem="{ item }">
-            <a-list-item>
-                <a-list-item-meta :description="'id:' + item.id">
-                    <template #title>
-                        <a @click="goToDetail(item.id)">
-                            {{ item.name }}
-                        </a>
-                    </template>
-                </a-list-item-meta>
-            </a-list-item>
-        </template>
-    </a-list>
+    <div style="margin-top: 10%; margin-left: 20%; margin-right: 20%;">
+        <a-list item-layout="horizontal" :data-source="data">
+            <template #renderItem="{ item }">
+                <a-list-item>
+                    <a-list-item-meta :description="'id:' + item.id">
+                        <template #title>
+                            <a @click="goToDetail(item.id)">
+                                {{ item.name }}
+                            </a>
+                        </template>
+                    </a-list-item-meta>
+                </a-list-item>
+            </template>
+        </a-list>
+    </div>
 </template>

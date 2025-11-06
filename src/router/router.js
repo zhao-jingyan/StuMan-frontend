@@ -1,5 +1,8 @@
 import SheetManager from '@/auth/SheetManager.vue'
+import ClassesList from '@/manage/ClassesList.vue';
 import Home from '@/manage/Home.vue';
+import StudentsList from '@/manage/StudentsList.vue';
+import EditProfile from '@/profile/EditProfile.vue';
 import ProfileView from '@/profile/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
 
@@ -9,7 +12,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/Auth',
+      path: '/auth',
       name: 'Auth',
       component: SheetManager
     },
@@ -24,8 +27,23 @@ const router = createRouter({
       component: ProfileView
     },
     {
+      path: '/profile/edit',
+      name: 'Edit',
+      component: EditProfile
+    },
+    {
       path: '/:pathMatch(.*)*', // 匹配所有路径
       redirect: '/'
+    },
+    {
+      path: '/students',
+      name: 'Students',
+      component: StudentsList
+    },
+    {
+      path: '/classes',
+      name: "Classes",
+      component: ClassesList
     }
   ],
 })

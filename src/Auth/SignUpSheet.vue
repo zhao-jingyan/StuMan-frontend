@@ -3,6 +3,7 @@
 import { UnwrapRef, reactive, computed, ref } from 'vue';
 import type { UserInfo } from '@/types/index'
 import { userService } from '@/services/userService';
+import router from '@/router/router';
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
@@ -29,7 +30,8 @@ const onSubmit = () => {
     console.log('class:' + signUpInfo.class)
     console.log('----------------------')
 
-    userService.register(signUpInfo)
+    // userService.register(signUpInfo)
+    router.push('/login')
 }
 
 const disableSubmit = computed(() => {

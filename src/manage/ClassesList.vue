@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import router from '@/router/router';
 import { ClassInfo } from '@/types';
 
 
 const goToDetail = (string : string) => {
-
+    router.push('/students')
 }
 
 const fetchClasses = () => {
@@ -24,9 +25,15 @@ const data: ClassInfo[] = [
         count: 45,
     }
 ]
+
+const onNewClass = () => {
+    
+}
 </script>
 
 <template>
+    <div style="margin-top: 10%; margin-left: 20%; margin-right: 20%;">
+        <a-button @class="onNewClass" style="margin-left: 20px; margin-bottom: 10px;"> new class </a-button>
     <a-list item-layout="horizontal" :data-source="data">
         <template #renderItem="{ item }">
             <a-list-item>
@@ -40,4 +47,5 @@ const data: ClassInfo[] = [
             </a-list-item>
         </template>
     </a-list>
+    </div>
 </template>

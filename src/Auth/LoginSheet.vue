@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 
-import { UnwrapRef, reactive, computed} from 'vue';
+import { UnwrapRef, reactive, computed } from 'vue';
 
 import type { LoginInfo } from '@/types/index'
 import { userService } from '@/services/userService'
+import router from '@/router/router';
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
@@ -22,10 +23,16 @@ const onSubmit = () => {
     console.log('password:' + loginInfo.password);
     console.log('----------------------');
 
-    userService.login(loginInfo);
+    // userService.login(loginInfo);
+    if (loginInfo.role === 'Student') {
+        router.push('/profile')
+    }
+    else if (loginInfo.role === 'Teacher') {
+        router.push('/classes')
+    }
 }
 
-const disableSubmit = computed (() => {
+const disableSubmit = computed(() => {
     return !(loginInfo.id && loginInfo.password)
 })
 
@@ -52,7 +59,7 @@ const props = defineProps([
             <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
+        <a-form-item :wrapper-col="{ span: 24, offset: 0 }" style="text-align: center;">
             <a-button style="width:70%" type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>

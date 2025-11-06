@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import router from '@/router/router';
 import { userService } from '@/services/userService';
 import type { UserInfo } from '@/types';
 
@@ -13,9 +14,13 @@ const userInfo: UserInfo = {
 }
 
 const onDelete = () => {
-    userService._delete(userInfo.id)
+    // userService._delete(userInfo.id)
+    router.push('/auth')
 }
 
+const onEdit = () => {
+    router.push('/profile/edit')
+}
 </script>
 
 <template>
@@ -28,7 +33,7 @@ const onDelete = () => {
             <a-descriptions-item label="Class">{{ userInfo.class }}</a-descriptions-item>
         </a-descriptions>
         <div style="text-align: right; margin-top: 2%;">
-            <a-button style="margin-right: 1%;">Edit Info</a-button>
+            <a-button style="margin-right: 1%" @click="onEdit">Edit Info</a-button>
             <a-button danger @click="onDelete"> Delete Account</a-button>
         </div>
     </div>

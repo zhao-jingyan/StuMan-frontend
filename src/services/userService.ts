@@ -3,7 +3,9 @@ import type { UserInfo, LoginInfo } from "@/types"
 export const userService = {
     register,
     login,
-    _delete
+    editProfile,
+    _delete,
+    logout
 }
 
 async function login(info: LoginInfo) {
@@ -28,6 +30,10 @@ async function register(user: UserInfo) {
     return handleResponse(response);
 }
 
+async function editProfile(user: UserInfo) {
+
+}
+
 async function _delete(id: string) {
     const requestOptions = {
         method: 'DELETE',
@@ -36,6 +42,10 @@ async function _delete(id: string) {
 
     const response = await fetch(`https://mockurl:4000/users/${id}`,requestOptions);
     return handleResponse(response);
+}
+
+async function logout(){
+
 }
 
 function handleResponse(response) {
