@@ -13,7 +13,7 @@ const props = defineProps<{
         <a-descriptions-item label="ID">{{ userInfo.id }}</a-descriptions-item>
         <a-descriptions-item label="Name">{{ userInfo.name }}</a-descriptions-item>
         <a-descriptions-item label="Nickname">{{ userInfo.nickname }}</a-descriptions-item>
-        <a-descriptions-item label="Type">{{ userInfo.type }}</a-descriptions-item>
+        <a-descriptions-item label="Type">{{ userInfo.role }}</a-descriptions-item>
         <a-descriptions-item label="Class">{{ userInfo.class }}</a-descriptions-item>
     </a-descriptions>
 </template>
