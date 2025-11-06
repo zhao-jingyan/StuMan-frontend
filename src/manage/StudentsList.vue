@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import type { UserInfo } from '@/types/index'
 
-const goToDetail = (string) => {
+const goToDetail = (string : string) => {
     console.log("route push: /" + string)
 }
 
+const fetchStudents = () => {
+
+}
 const data: UserInfo[] = [
     {
         id: "12345678",
