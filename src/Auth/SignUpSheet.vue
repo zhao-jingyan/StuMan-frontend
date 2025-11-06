@@ -40,10 +40,15 @@ const visible = ref<boolean>(false)
 
 const validateStatus = computed(() => signUpInfo.password == checkPassword.value ? 'success' : 'error');
 
+const props = defineProps([
+    'labelCol',
+    'wrapperCol'
+])
+
 </script>
 
 <template>
-    <a-form :model="signUpInfo">
+    <a-form :model="signUpInfo" :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-form-item label="You are:">
             <a-radio-group v-model:value="signUpInfo.role">
                 <a-radio value="Student">Student</a-radio>
@@ -60,7 +65,7 @@ const validateStatus = computed(() => signUpInfo.password == checkPassword.value
             <a-input-password v-model:value="signUpInfo.password" v-model:visible="visible" />
         </a-form-item>
         <!--维护一个变量进行二次检查，不影响数据模型-->
-        <a-form-item label="Password check" :validate-status="validateStatus"
+        <a-form-item label="Confirm" :validate-status="validateStatus"
             :help="validateStatus == 'error' ? 'Passwords do not match!' : ''" required>
             <a-input-password v-model:value="checkPassword" v-model:visible="visible" />
         </a-form-item>
@@ -70,9 +75,8 @@ const validateStatus = computed(() => signUpInfo.password == checkPassword.value
         <a-form-item v-if="signUpInfo.role == 'Student'" label="Class">
             <a-input v-model:value="signUpInfo.class" />
         </a-form-item>
-        <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item style="text-align: right">
-            <a-button role="primary" @click="onSubmit" :disabled="disableSubmit" >
+        <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
+            <a-button style=" width: 80%" type="primary" @click="onSubmit" :disabled="disableSubmit">
                 Sign Up
             </a-button>
         </a-form-item>

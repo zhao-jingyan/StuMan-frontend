@@ -29,10 +29,16 @@ const disableSubmit = computed (() => {
     return !(loginInfo.id && loginInfo.password)
 })
 
+const props = defineProps([
+    'labelCol',
+    'wrapperCol'
+])
+
+
 </script>
 
 <template>
-    <a-form :model="loginInfo">
+    <a-form :model="loginInfo" :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-form-item label="You are:">
             <a-radio-group v-model:value="loginInfo.role">
                 <a-radio value="Student">Student</a-radio>
@@ -46,8 +52,8 @@ const disableSubmit = computed (() => {
             <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item  style="text-align: right">
-            <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
+        <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
+            <a-button style="width:80%" type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
 </template>
