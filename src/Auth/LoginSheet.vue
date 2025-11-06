@@ -53,7 +53,7 @@ const props = defineProps([
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
         <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
-            <a-button style="width:80%" type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
+            <a-button style="width:70%" type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
 </template>

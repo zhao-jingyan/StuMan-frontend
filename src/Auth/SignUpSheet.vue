@@ -76,7 +76,7 @@ const props = defineProps([
             <a-input v-model:value="signUpInfo.class" />
         </a-form-item>
         <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
-            <a-button style=" width: 80%" type="primary" @click="onSubmit" :disabled="disableSubmit">
+            <a-button style=" width: 70%" type="primary" @click="onSubmit" :disabled="disableSubmit">
                 Sign Up
             </a-button>
         </a-form-item>
