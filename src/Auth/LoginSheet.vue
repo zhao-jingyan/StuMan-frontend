@@ -9,7 +9,7 @@ import { userService } from '@/services/userService'
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
 const loginInfo: UnwrapRef<LoginInfo> = reactive({
     id: '',
-    type: 'Student',
+    role: 'Student',
     password: '',
 })
 
@@ -18,7 +18,7 @@ const onSubmit = () => {
     console.log('----------------------');
     console.log('submit!');
     console.log('id:' + loginInfo.id);
-    console.log('type:' + loginInfo.type);
+    console.log('type:' + loginInfo.role);
     console.log('password:' + loginInfo.password);
     console.log('----------------------');
 
@@ -34,7 +34,7 @@ const disableSubmit = computed (() => {
 <template>
     <a-form :model="loginInfo">
         <a-form-item label="You are:">
-            <a-radio-group v-model:value="loginInfo.type">
+            <a-radio-group v-model:value="loginInfo.role">
                 <a-radio value="Student">Student</a-radio>
                 <a-radio value="Teacher">Teacher</a-radio>
             </a-radio-group>
@@ -46,7 +46,7 @@ const disableSubmit = computed (() => {
             <a-input-password v-model:value="loginInfo.password" />
         </a-form-item>
         <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item >
+        <a-form-item  style="text-align: right">
             <a-button type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
         </a-form-item>
     </a-form>
