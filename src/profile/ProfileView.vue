@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ProfileSheet from '@/manage/ProfileSheet.vue'
+import ProfileSheet from '@/profile/ProfileSheet.vue'
 import { userService } from '@/services/userService';
 import type { UserInfo } from '@/types';
 

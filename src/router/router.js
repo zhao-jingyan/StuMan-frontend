@@ -1,7 +1,7 @@
 import SheetManager from '@/auth/SheetManager.vue'
 import Home from '@/manage/Home.vue';
-import Profile from '@/manage/ProfileSheet.vue'
-import ProfileView from '@/manage/ProfileView.vue';
+import Profile from '@/profile/ProfileSheet.vue'
+import ProfileView from '@/profile/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
 
 const isAuthenticated = true;
