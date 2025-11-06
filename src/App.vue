@@ -1,6 +1,5 @@
 <script lang="ts" setup>
   import SheetManager from './auth/SheetManager.vue';
-  import Profile from './profile/ProfileSheet.vue';
   import List from './manage/StudentsList.vue';
   import type { UserInfo } from '@/types/index';
 
