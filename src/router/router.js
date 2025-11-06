@@ -1,6 +1,5 @@
 import SheetManager from '@/auth/SheetManager.vue'
 import Home from '@/manage/Home.vue';
-import Profile from '@/profile/ProfileSheet.vue'
 import ProfileView from '@/profile/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
 
