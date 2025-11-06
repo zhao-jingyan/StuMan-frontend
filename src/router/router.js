@@ -1,9 +1,10 @@
 import SheetManager from '@/auth/SheetManager.vue'
 import Home from '@/manage/Home.vue';
-import Profile from '@/manage/Profile.vue'
+import Profile from '@/manage/ProfileSheet.vue'
+import ProfileView from '@/manage/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
 
-const isAuthenticated = false;
+const isAuthenticated = true;
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: ProfileView
     },
     {
       path: '/:pathMatch(.*)*', // 匹配所有路径
