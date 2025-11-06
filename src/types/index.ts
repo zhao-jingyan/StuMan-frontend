@@ -12,3 +12,8 @@ export interface LoginInfo {
     role: string;
     password: string
 }
+
+export interface ClassInfo {
+    id: string;
+    count: number;
+}
