@@ -1,15 +1,21 @@
 <script lang="ts" setup>
 import router from '@/router/router'
 import type { UserInfo } from '@/types/index'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router';
 
-const goToDetail = (string: string) => {
-    router.push('/profile')
+const route = useRoute();
+
+const goToDetail = (studentId: string) => {
+    const newRoute = route.fullPath + '/' + studentId;
+    router.push(newRoute);
 }
 
-const fetchStudents = () => {
-
+const fetchStudents = (classId : string) => {
+    //get students from 
+    console.log('fetch students in classId: ' + classId);
 }
-const data: UserInfo[] = [
+const mockData: UserInfo[] = [
     {
         id: "12345678",
         name: "Test Name",
@@ -36,11 +42,15 @@ const data: UserInfo[] = [
     },
 ]
 
+onMounted(() => {
+    const classNum : string = route.params.classNum as string;
+    fetchStudents(classNum);
+})
 </script>
 
 <template>
     <div style="margin-top: 10%; margin-left: 20%; margin-right: 20%;">
-        <a-list item-layout="horizontal" :data-source="data">
+        <a-list item-layout="horizontal" :data-source="mockData">
             <template #renderItem="{ item }">
                 <a-list-item>
                     <a-list-item-meta :description="'id:' + item.id">

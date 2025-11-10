@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 /* edit 和 signup 大量代码重复，但是如果复用signup代码可能导致维护困难，因此先尝试在signup代码上修改*/
-import { UnwrapRef, reactive, computed, ref } from 'vue';
+import { UnwrapRef, reactive, computed, ref, onMounted } from 'vue';
 import type { UserInfo } from '@/types/index'
 import { userService } from '@/services/userService';
 import router from '@/router/router';
+
+
 
 /* 实例化info对象，设定为reactive*/
 /* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
@@ -23,15 +25,24 @@ const labelCol = { style: { width: '100px' } };
 const wrapperCol = { span: 15 };
 
 const onCancel = () => {
-    router.push('/profile')
+    router.back();
 }
 
 const onConfirm = () => {
     userService.editProfile(UserInfo)
-    userService.logout()
-    router.push('/auth')
+    if (1) {//for teachers
+        router.back();
+    }
+    else if (1) {//for students
+
+        userService.logout();
+        router.push('/auth');
+    }
 }
 
+onMounted(() => {
+    
+})
 </script>
 
 <template>

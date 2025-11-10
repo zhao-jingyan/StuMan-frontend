@@ -1,17 +1,19 @@
 <script lang="ts" setup>
 import router from '@/router/router';
+import { userService } from '@/services/userService';
 import { ClassInfo } from '@/types';
+import { onMounted } from 'vue';
 
 
-const goToDetail = (string : string) => {
-    router.push('/students')
+const goToDetail = (classId : string) => {
+    router.push('/classes/' + classId + '/students')
 }
 
 const fetchClasses = () => {
-
+    //get data， classes list， 
 }
 
-const data: ClassInfo[] = [
+const mockData: ClassInfo[] = [
     {
        id: "1",
        count: 23, 
@@ -27,14 +29,18 @@ const data: ClassInfo[] = [
 ]
 
 const onNewClass = () => {
-    
+    userService.newClass();
 }
+
+onMounted(() => {
+    fetchClasses();
+})
 </script>
 
 <template>
     <div style="margin-top: 10%; margin-left: 20%; margin-right: 20%;">
         <a-button @class="onNewClass" style="margin-left: 20px; margin-bottom: 10px;"> new class </a-button>
-    <a-list item-layout="horizontal" :data-source="data">
+    <a-list item-layout="horizontal" :data-source="mockData">
         <template #renderItem="{ item }">
             <a-list-item>
                 <a-list-item-meta :description="item.count + ' students in this class'">

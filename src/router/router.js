@@ -27,7 +27,7 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/profile/edit',
+      path: '/classes/:classNum/students/:studentId/edit',
       name: 'Edit',
       component: EditProfile
     },
@@ -36,9 +36,14 @@ const router = createRouter({
       redirect: '/'
     },
     {
-      path: '/students',
+      path: '/classes/:classNum/students',
       name: 'Students',
       component: StudentsList
+    },
+    {
+      path: '/classes/:classNum/students/:studentId',
+      name: 'Profile',
+      component: ProfileView
     },
     {
       path: '/classes',

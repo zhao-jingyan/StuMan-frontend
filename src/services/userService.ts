@@ -5,7 +5,8 @@ export const userService = {
     login,
     editProfile,
     _delete,
-    logout
+    logout,
+    newClass
 }
 
 async function login(info: LoginInfo) {
@@ -37,13 +38,23 @@ async function editProfile(user: UserInfo) {
 async function _delete(id: string) {
     const requestOptions = {
         method: 'DELETE',
-        headers: authHeader() //和登录状态相关
+        headers: authHeader(), //和登录状态相关
+        body: JSON.stringify(id)
     }
 
     const response = await fetch(`https://mockurl:4000/users/${id}`,requestOptions);
     return handleResponse(response);
 }
 
+async function newClass() {
+    const requestOptions = {
+        method: 'POST',
+        headers:authHeader()
+    }
+
+    const response = await fetch(`https://mockurl:4000/classes/new`,requestOptions);
+    return handleResponse(response);
+}
 async function logout(){
 
 }
