@@ -2,9 +2,11 @@
 import router from '@/router/router'
 import type { UserInfo } from '@/types/index'
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router';
+import { createRouter, useRoute } from 'vue-router';
 
 const route = useRoute();
+
+const classNum : string = route.params.classNum as string;
 
 const goToDetail = (studentId: string) => {
     const newRoute = route.fullPath + '/' + studentId;
@@ -43,13 +45,13 @@ const mockData: UserInfo[] = [
 ]
 
 onMounted(() => {
-    const classNum : string = route.params.classNum as string;
     fetchStudents(classNum);
 })
 </script>
 
 <template>
     <div style="margin-top: 10%; margin-left: 20%; margin-right: 20%;">
+        <a-typography-text>Students in class {{ classNum }} :</a-typography-text>
         <a-list item-layout="horizontal" :data-source="mockData">
             <template #renderItem="{ item }">
                 <a-list-item>
