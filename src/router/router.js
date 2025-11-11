@@ -27,8 +27,13 @@ const router = createRouter({
       component: ProfileView
     },
     {
+      path: '/profile/edit',
+      name: "EditProfile",
+      component: EditProfile
+    },
+    {
       path: '/classes/:classNum/students/:studentId/edit',
-      name: 'Edit',
+      name: 'TeacherEdit',
       component: EditProfile
     },
     {
@@ -42,7 +47,7 @@ const router = createRouter({
     },
     {
       path: '/classes/:classNum/students/:studentId',
-      name: 'Profile',
+      name: 'ManageProfile',
       component: ProfileView
     },
     {
