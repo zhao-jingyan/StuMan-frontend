@@ -2,6 +2,8 @@
 
 import { ref, computed } from 'vue';
 import router from '@/router/router';
+import MySheet from '@/components/MySheet.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 const loginInfo = ref({
     id: '',
@@ -33,8 +35,8 @@ const disableSubmit = computed(() => {
 </script>
 
 <template>
-    <div class="global-background">
-        <div class="global-form-sheet">
+    <main-layout :show-header="false">
+        <my-sheet>
             <a-form :model="loginInfo" style="width: 60%;">
                 <h1 class="title">Log in</h1>
                 <a-form-item>
@@ -64,15 +66,15 @@ const disableSubmit = computed(() => {
                     </div>
                 </a-form-item>
             </a-form>
-        </div>
-    </div>
+        </my-sheet>
+    </main-layout>
 </template>
 
 <style scoped>
 .title {
     text-align: center;
     font-size: 700;
-    line-height: 3rem;
+    line-height: 5rem;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -81,5 +83,16 @@ const disableSubmit = computed(() => {
     line-height: 50%;
     font-size: medium;
     font-weight: 600;
+}
+
+.sheet {
+    height: 600px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 </style>

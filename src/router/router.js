@@ -1,8 +1,9 @@
-import LoginSheet from '@/auth/LoginSheet.vue';
-import SignUpSheet from '@/auth/SignUpSheet.vue';
-import ClassesList from '@/manage/ClassesList.vue';
-import Home from '@/manage/Home.vue';
-import StudentsList from '@/manage/StudentsList.vue';
+import LoginPage from '@/views/LoginPage.vue';
+import SignUpPage from '@/views/SignUpPage.vue';
+import Header from '@/components/MyHeader.vue';
+import ClassesList from '@/main/ClassesList.vue';
+import Home from '@/views/Home.vue';
+import StudentsList from '@/main/StudentsList.vue';
 import EditProfile from '@/profile/EditProfile.vue';
 import ProfileView from '@/profile/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
@@ -13,14 +14,19 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path:'/header',
+      name:'header',
+      component : Header
+    },
+    {
       path: '/login',
       name: 'Login',
-      component: LoginSheet
+      component: LoginPage
     },
     {
       path: '/signup',
       name: 'SignUp',
-      component: SignUpSheet
+      component: SignUpPage
     },
     {
       path: '/',

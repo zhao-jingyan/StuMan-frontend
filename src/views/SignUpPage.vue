@@ -2,6 +2,8 @@
 
 import {computed, ref } from 'vue';
 import router from '@/router/router';
+import MySheet from '@/components/MySheet.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 const signUpInfo  = ref({
     name: '',
@@ -33,8 +35,8 @@ const disableSubmit = computed(() => {
 </script>
 
 <template>
-    <div class="global-background">
-        <div class="global-form-sheet">
+    <main-layout :show-header="false">
+        <my-sheet>
             <a-form :model="signUpInfo" style="width: 60%;">
                 <h1 class="title">Create Account</h1>
                 <p class="label">Name:</p>
@@ -61,8 +63,8 @@ const disableSubmit = computed(() => {
                     </a-button>
                 </a-form-item>
             </a-form>
-        </div>
-    </div>
+        </my-sheet>
+    </main-layout>
 </template>
 
 <style scoped>
@@ -70,7 +72,7 @@ const disableSubmit = computed(() => {
 .title {
     text-align: center;
     font-size: 700;
-    line-height: 3rem;
+    line-height: 5rem;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -80,4 +82,6 @@ const disableSubmit = computed(() => {
     font-size: medium;
     font-weight: 600;
 }
+
+
 </style>
