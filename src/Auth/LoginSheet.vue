@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import { ref , computed } from 'vue';
+import { ref, computed } from 'vue';
 import router from '@/router/router';
 
 const loginInfo = ref({
@@ -22,7 +22,7 @@ const onSignup = () => {
 }
 
 const onForgotPassword = () => {
-    
+
 }
 
 const disableSubmit = computed(() => {
@@ -35,32 +35,33 @@ const disableSubmit = computed(() => {
 <template>
     <div class="global-background">
         <div class="global-form-sheet">
-            <a-form :model="loginInfo">
+            <a-form :model="loginInfo" style="width: 60%;">
                 <h1 class="title">Log in</h1>
                 <a-form-item>
                     <p class="label">ID:</p>
-                    <a-input v-model:value="loginInfo.id" />
+                    <a-input v-model:value="loginInfo.id" autofocus placeholder="Student/Teacher ID" size="large" />
                 </a-form-item>
                 <a-form-item>
                     <p class="label">Password:</p>
-                    <a-input-password v-model:value="loginInfo.password" style="size: 150%;" />
-                    <div style="margin-top: 10px;">
-                    <a style="color:grey; text-decoration: underline; font-size: small;"
-                        @click="onForgotPassword">
-                        Forgot your passowrd?
-                    </a>
-                    </div>
+                    <a-input-password v-model:value="loginInfo.password" style="size: 150%;" placeholder="Password"
+                        size="large" />
                 </a-form-item>
-                <a-form-item style="margin-top : 50px">
+                <a-form-item style="margin-top : 40px">
                     <a-button style="width:100%; margin-bottom: 15px;" type="primary" @click="onSubmit"
-                        :disabled="disableSubmit">
-                        <p style="font-weight: 600;">Login</p>
+                        :disabled="disableSubmit" size="large">
+                        <p style="font-weight: 600;">Log in</p>
                     </a-button>
-                    <a-button style="width:100%; " @click="onSignup">
+                    <a-button style="width:100%; " @click="onSignup" size="large">
                         <p style="font-weight: 600;">
-                            Sign Up
+                            Create Account
                         </p>
                     </a-button>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a style="color:grey; text-decoration: underline; font-size: small; text-align: center;"
+                            @click="onForgotPassword">
+                            Forgot your password?
+                        </a>
+                    </div>
                 </a-form-item>
             </a-form>
         </div>
@@ -71,7 +72,7 @@ const disableSubmit = computed(() => {
 .title {
     text-align: center;
     font-size: 700;
-    line-height: 5rem;
+    line-height: 3rem;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -35,26 +35,26 @@ const disableSubmit = computed(() => {
 <template>
     <div class="global-background">
         <div class="global-form-sheet">
-            <a-form :model="signUpInfo">
-                <h1 class="title">Sign Up</h1>
+            <a-form :model="signUpInfo" style="width: 60%;">
+                <h1 class="title">Create Account</h1>
                 <p class="label">Name:</p>
                 <a-form-item required>
-                    <a-input v-model:value="signUpInfo.name" />
+                    <a-input v-model:value="signUpInfo.name" autofocus placeholder="Real Name" size="large"/>
                 </a-form-item>
                 <p class="label">ID:</p>
                 <a-form-item required>
-                    <a-input v-model:value="signUpInfo.id" />
+                    <a-input v-model:value="signUpInfo.id" placeholder="Student/Teacher ID" size="large"/>
                 </a-form-item>
                 <p class="label">Password:</p>
                 <a-form-item required>
-                    <a-input-password v-model:value="signUpInfo.password" />
+                    <a-input-password v-model:value="signUpInfo.password" placeholder="Password" size="large"/>
                 </a-form-item>
                 <a-form-item>
                     <a-button style="width:100%; margin-top:10px; margin-bottom: 15px;" type="primary" @click="onSubmit"
-                        :disabled="disableSubmit">
-                        <p style="font-weight: 600;">Sign Up</p>
+                        :disabled="disableSubmit" size="large">
+                        <p style="font-weight: 600;">Create</p>
                     </a-button>
-                    <a-button style="width:100%; " @click="onLogin">
+                    <a-button style="width:100%; " @click="onLogin" size="large">
                         <p style="font-weight: 600;">
                             Back to Login
                         </p>
@@ -70,7 +70,7 @@ const disableSubmit = computed(() => {
 .title {
     text-align: center;
     font-size: 700;
-    line-height: 5rem;
+    line-height: 3rem;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
