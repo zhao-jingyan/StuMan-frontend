@@ -1,0 +1,17 @@
+.global-background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ghostwhite;
+}
+
+.global-form-sheet {
+    height: 600px;
+    width: 500px;
+    padding: 75px 100px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}

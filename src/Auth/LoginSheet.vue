@@ -1,16 +1,10 @@
 <script lang="ts" setup>
 
-import { UnwrapRef, reactive, computed } from 'vue';
-
-import type { LoginInfo } from '@/types/index'
-import { userService } from '@/services/userService'
+import { ref , computed } from 'vue';
 import router from '@/router/router';
 
-/* 实例化info对象，设定为reactive*/
-/* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
-const loginInfo: UnwrapRef<LoginInfo> = reactive({
+const loginInfo = ref({
     id: '',
-    role: 'Student',
     password: '',
 })
 
@@ -18,49 +12,73 @@ const onSubmit = () => {
     /* a console test logic */
     console.log('----------------------');
     console.log('submit!');
-    console.log('id:' + loginInfo.id);
-    console.log('type:' + loginInfo.role);
-    console.log('password:' + loginInfo.password);
+    console.log('id:' + loginInfo.value.id);
+    console.log('password:' + loginInfo.value.password);
     console.log('----------------------');
+}
 
-    // userService.login(loginInfo);
-    if (loginInfo.role === 'Student') {
-        router.push('/profile')
-    }
-    else if (loginInfo.role === 'Teacher') {
-        router.push('/classes')
-    }
+const onSignup = () => {
+    router.push('/signup')
+}
+
+const onForgotPassword = () => {
+    
 }
 
 const disableSubmit = computed(() => {
-    return !(loginInfo.id && loginInfo.password)
+    return !(loginInfo.value.id && loginInfo.value.password)
 })
-
-const props = defineProps([
-    'labelCol',
-    'wrapperCol'
-])
 
 
 </script>
 
 <template>
-    <a-form :model="loginInfo" :label-col="labelCol" :wrapper-col="wrapperCol">
-        <a-form-item label="You are:">
-            <a-radio-group v-model:value="loginInfo.role">
-                <a-radio value="Student">Student</a-radio>
-                <a-radio value="Teacher">Teacher</a-radio>
-            </a-radio-group>
-        </a-form-item>
-        <a-form-item label="ID">
-            <a-input v-model:value="loginInfo.id" />
-        </a-form-item>
-        <a-form-item label="Password">
-            <a-input-password v-model:value="loginInfo.password" />
-        </a-form-item>
-        <!-- 偏移button，使其与表单输入列对齐-->
-        <a-form-item :wrapper-col="{ span: 24, offset: 0 }" style="text-align: center;">
-            <a-button style="width:70%" type="primary" @click="onSubmit" :disabled="disableSubmit">Login</a-button>
-        </a-form-item>
-    </a-form>
+    <div class="global-background">
+        <div class="global-form-sheet">
+            <a-form :model="loginInfo">
+                <h1 class="title">Log in</h1>
+                <a-form-item>
+                    <p class="label">ID:</p>
+                    <a-input v-model:value="loginInfo.id" />
+                </a-form-item>
+                <a-form-item>
+                    <p class="label">Password:</p>
+                    <a-input-password v-model:value="loginInfo.password" style="size: 150%;" />
+                    <div style="margin-top: 10px;">
+                    <a style="color:grey; text-decoration: underline; font-size: small;"
+                        @click="onForgotPassword">
+                        Forgot your passowrd?
+                    </a>
+                    </div>
+                </a-form-item>
+                <a-form-item style="margin-top : 50px">
+                    <a-button style="width:100%; margin-bottom: 15px;" type="primary" @click="onSubmit"
+                        :disabled="disableSubmit">
+                        <p style="font-weight: 600;">Login</p>
+                    </a-button>
+                    <a-button style="width:100%; " @click="onSignup">
+                        <p style="font-weight: 600;">
+                            Sign Up
+                        </p>
+                    </a-button>
+                </a-form-item>
+            </a-form>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+.title {
+    text-align: center;
+    font-size: 700;
+    line-height: 5rem;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.label {
+    line-height: 50%;
+    font-size: medium;
+    font-weight: 600;
+}
+</style>

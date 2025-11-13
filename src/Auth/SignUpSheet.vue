@@ -1,86 +1,83 @@
 <script lang="ts" setup>
 
-import { UnwrapRef, reactive, computed, ref } from 'vue';
-import type { UserInfo } from '@/types/index'
-import { userService } from '@/services/userService';
+import {computed, ref } from 'vue';
 import router from '@/router/router';
 
-/* 实例化info对象，设定为reactive*/
-/* antd官网提供的 用法如此，使用unwrapref和reactive，需要再看一下 */
-const signUpInfo: UnwrapRef<UserInfo> = reactive({
-    role: 'Student',
+const signUpInfo  = ref({
     name: '',
     id: '',
     password: '',
-    nickname: '',
-    class: '',
 })
-
-const checkPassword = ref("");
 
 const onSubmit = () => {
     /* a console test logic */
     console.log('----------------------')
     console.log('submit!');
-    console.log('role:' + signUpInfo.role)
-    console.log('name:' + signUpInfo.name)
-    console.log('id:' + signUpInfo.id)
-    console.log('password:' + signUpInfo.password)
-    console.log('nickname:' + signUpInfo.nickname)
-    console.log('class:' + signUpInfo.class)
+    console.log('name:' + signUpInfo.value.name)
+    console.log('id:' + signUpInfo.value.id)
+    console.log('password:' + signUpInfo.value.password)
     console.log('----------------------')
 
     // userService.register(signUpInfo)
     router.push('/login')
 }
 
+const onLogin= () => {
+    router.push('/login')
+}
+
 const disableSubmit = computed(() => {
-    return !(signUpInfo.id && signUpInfo.name && signUpInfo.password && signUpInfo.password === checkPassword.value)
+    return !(signUpInfo.value.id && signUpInfo.value.name && signUpInfo.value.password)
 })
-
-const visible = ref<boolean>(false)
-
-const validateStatus = computed(() => signUpInfo.password == checkPassword.value ? 'success' : 'error');
-
-const props = defineProps([
-    'labelCol',
-    'wrapperCol'
-])
 
 </script>
 
 <template>
-    <a-form :model="signUpInfo" :label-col="labelCol" :wrapper-col="wrapperCol">
-        <a-form-item label="You are:">
-            <a-radio-group v-model:value="signUpInfo.role">
-                <a-radio value="Student">Student</a-radio>
-                <a-radio value="Teacher">Teacher</a-radio>
-            </a-radio-group>
-        </a-form-item>
-        <a-form-item label="Name:" required>
-            <a-input v-model:value="signUpInfo.name" />
-        </a-form-item>
-        <a-form-item label="ID" required>
-            <a-input v-model:value="signUpInfo.id" />
-        </a-form-item>
-        <a-form-item label="Password" required>
-            <a-input-password v-model:value="signUpInfo.password" v-model:visible="visible" />
-        </a-form-item>
-        <!--维护一个变量进行二次检查，不影响数据模型-->
-        <a-form-item label="Confirm" :validate-status="validateStatus"
-            :help="validateStatus == 'error' ? 'Passwords do not match!' : ''" required>
-            <a-input-password v-model:value="checkPassword" v-model:visible="visible" />
-        </a-form-item>
-        <a-form-item v-if="signUpInfo.role == 'Student'" label="Nickname:">
-            <a-input v-model:value="signUpInfo.nickname" />
-        </a-form-item>
-        <a-form-item v-if="signUpInfo.role == 'Student'" label="Class">
-            <a-input v-model:value="signUpInfo.class" />
-        </a-form-item>
-        <a-form-item :wrapper-col="{span:24, offset:0}" style="text-align: center;">
-            <a-button style=" width: 70%" type="primary" @click="onSubmit" :disabled="disableSubmit">
-                Sign Up
-            </a-button>
-        </a-form-item>
-    </a-form>
+    <div class="global-background">
+        <div class="global-form-sheet">
+            <a-form :model="signUpInfo">
+                <h1 class="title">Sign Up</h1>
+                <p class="label">Name:</p>
+                <a-form-item required>
+                    <a-input v-model:value="signUpInfo.name" />
+                </a-form-item>
+                <p class="label">ID:</p>
+                <a-form-item required>
+                    <a-input v-model:value="signUpInfo.id" />
+                </a-form-item>
+                <p class="label">Password:</p>
+                <a-form-item required>
+                    <a-input-password v-model:value="signUpInfo.password" />
+                </a-form-item>
+                <a-form-item>
+                    <a-button style="width:100%; margin-top:10px; margin-bottom: 15px;" type="primary" @click="onSubmit"
+                        :disabled="disableSubmit">
+                        <p style="font-weight: 600;">Sign Up</p>
+                    </a-button>
+                    <a-button style="width:100%; " @click="onLogin">
+                        <p style="font-weight: 600;">
+                            Back to Login
+                        </p>
+                    </a-button>
+                </a-form-item>
+            </a-form>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+
+.title {
+    text-align: center;
+    font-size: 700;
+    line-height: 5rem;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.label {
+    line-height: 50%;
+    font-size: medium;
+    font-weight: 600;
+}
+</style>

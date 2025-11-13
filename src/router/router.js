@@ -1,4 +1,5 @@
-import SheetManager from '@/auth/SheetManager.vue'
+import LoginSheet from '@/auth/LoginSheet.vue';
+import SignUpSheet from '@/auth/SignUpSheet.vue';
 import ClassesList from '@/manage/ClassesList.vue';
 import Home from '@/manage/Home.vue';
 import StudentsList from '@/manage/StudentsList.vue';
@@ -12,9 +13,14 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/auth',
-      name: 'Auth',
-      component: SheetManager
+      path: '/login',
+      name: 'Login',
+      component: LoginSheet
+    },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUpSheet
     },
     {
       path: '/',
