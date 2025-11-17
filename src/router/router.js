@@ -1,6 +1,5 @@
 import LoginPage from '@/views/LoginPage.vue';
 import SignUpPage from '@/views/SignUpPage.vue';
-import Header from '@/components/MyHeader.vue';
 import ClassesList from '@/main/ClassesList.vue';
 import Home from '@/views/Home.vue';
 import StudentsList from '@/main/StudentsList.vue';
@@ -13,11 +12,6 @@ const isAuthenticated = true;
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {
-      path:'/header',
-      name:'header',
-      component : Header
-    },
     {
       path: '/login',
       name: 'Login',

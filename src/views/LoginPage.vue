@@ -2,8 +2,8 @@
 
 import { ref, computed } from 'vue';
 import router from '@/router/router';
-import MySheet from '@/components/MySheet.vue';
-import MainLayout from '@/layouts/MainLayout.vue';
+import SheetLayout from '@/layouts/SheetLayout.vue';
+
 
 const loginInfo = ref({
     id: '',
@@ -35,39 +35,37 @@ const disableSubmit = computed(() => {
 </script>
 
 <template>
-    <main-layout :show-header="false">
-        <my-sheet>
-            <a-form :model="loginInfo" style="width: 60%;">
-                <h1 class="title">Log in</h1>
-                <a-form-item>
-                    <p class="label">ID:</p>
-                    <a-input v-model:value="loginInfo.id" autofocus placeholder="Student/Teacher ID" size="large" />
-                </a-form-item>
-                <a-form-item>
-                    <p class="label">Password:</p>
-                    <a-input-password v-model:value="loginInfo.password" style="size: 150%;" placeholder="Password"
-                        size="large" />
-                </a-form-item>
-                <a-form-item style="margin-top : 40px">
-                    <a-button style="width:100%; margin-bottom: 15px;" type="primary" @click="onSubmit"
-                        :disabled="disableSubmit" size="large">
-                        <p style="font-weight: 600;">Log in</p>
-                    </a-button>
-                    <a-button style="width:100%; " @click="onSignup" size="large">
-                        <p style="font-weight: 600;">
-                            Create Account
-                        </p>
-                    </a-button>
-                    <div style="text-align: center; margin-top: 10px;">
-                        <a style="color:grey; text-decoration: underline; font-size: small; text-align: center;"
-                            @click="onForgotPassword">
-                            Forgot your password?
-                        </a>
-                    </div>
-                </a-form-item>
-            </a-form>
-        </my-sheet>
-    </main-layout>
+    <sheet-layout>
+        <a-form :model="loginInfo" style="width: 60%;">
+            <h1 class="title">Log in</h1>
+            <a-form-item>
+                <p class="label">ID:</p>
+                <a-input v-model:value="loginInfo.id" autofocus placeholder="Student/Teacher ID" size="large" />
+            </a-form-item>
+            <a-form-item>
+                <p class="label">Password:</p>
+                <a-input-password v-model:value="loginInfo.password" style="size: 150%;" placeholder="Password"
+                    size="large" />
+            </a-form-item>
+            <a-form-item style="margin-top : 40px">
+                <a-button style="width:100%; margin-bottom: 15px;" type="primary" @click="onSubmit"
+                    :disabled="disableSubmit" size="large">
+                    <p style="font-weight: 600;">Log in</p>
+                </a-button>
+                <a-button style="width:100%; " @click="onSignup" size="large">
+                    <p style="font-weight: 600;">
+                        Create Account
+                    </p>
+                </a-button>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a style="color:grey; text-decoration: underline; font-size: small; text-align: center;"
+                        @click="onForgotPassword">
+                        Forgot your password?
+                    </a>
+                </div>
+            </a-form-item>
+        </a-form>
+    </sheet-layout>
 </template>
 
 <style scoped>

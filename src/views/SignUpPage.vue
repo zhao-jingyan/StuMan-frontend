@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 
-import {computed, ref } from 'vue';
+import { computed, ref } from 'vue';
 import router from '@/router/router';
-import MySheet from '@/components/MySheet.vue';
-import MainLayout from '@/layouts/MainLayout.vue';
+import SheetLayout from '@/layouts/SheetLayout.vue';
 
-const signUpInfo  = ref({
+const signUpInfo = ref({
     name: '',
     id: '',
     password: '',
@@ -24,7 +23,7 @@ const onSubmit = () => {
     router.push('/login')
 }
 
-const onLogin= () => {
+const onLogin = () => {
     router.push('/login')
 }
 
@@ -35,40 +34,37 @@ const disableSubmit = computed(() => {
 </script>
 
 <template>
-    <main-layout :show-header="false">
-        <my-sheet>
-            <a-form :model="signUpInfo" style="width: 60%;">
-                <h1 class="title">Create Account</h1>
-                <p class="label">Name:</p>
-                <a-form-item required>
-                    <a-input v-model:value="signUpInfo.name" autofocus placeholder="Real Name" size="large"/>
-                </a-form-item>
-                <p class="label">ID:</p>
-                <a-form-item required>
-                    <a-input v-model:value="signUpInfo.id" placeholder="Student/Teacher ID" size="large"/>
-                </a-form-item>
-                <p class="label">Password:</p>
-                <a-form-item required>
-                    <a-input-password v-model:value="signUpInfo.password" placeholder="Password" size="large"/>
-                </a-form-item>
-                <a-form-item>
-                    <a-button style="width:100%; margin-top:10px; margin-bottom: 15px;" type="primary" @click="onSubmit"
-                        :disabled="disableSubmit" size="large">
-                        <p style="font-weight: 600;">Create</p>
-                    </a-button>
-                    <a-button style="width:100%; " @click="onLogin" size="large">
-                        <p style="font-weight: 600;">
-                            Back to Login
-                        </p>
-                    </a-button>
-                </a-form-item>
-            </a-form>
-        </my-sheet>
-    </main-layout>
+    <sheet-layout>
+        <a-form :model="signUpInfo" style="width: 60%;">
+            <h1 class="title">Create Account</h1>
+            <p class="label">Name:</p>
+            <a-form-item required>
+                <a-input v-model:value="signUpInfo.name" autofocus placeholder="Real Name" size="large" />
+            </a-form-item>
+            <p class="label">ID:</p>
+            <a-form-item required>
+                <a-input v-model:value="signUpInfo.id" placeholder="Student/Teacher ID" size="large" />
+            </a-form-item>
+            <p class="label">Password:</p>
+            <a-form-item required>
+                <a-input-password v-model:value="signUpInfo.password" placeholder="Password" size="large" />
+            </a-form-item>
+            <a-form-item>
+                <a-button style="width:100%; margin-top:10px; margin-bottom: 15px;" type="primary" @click="onSubmit"
+                    :disabled="disableSubmit" size="large">
+                    <p style="font-weight: 600;">Create</p>
+                </a-button>
+                <a-button style="width:100%; " @click="onLogin" size="large">
+                    <p style="font-weight: 600;">
+                        Back to Login
+                    </p>
+                </a-button>
+            </a-form-item>
+        </a-form>
+    </sheet-layout>
 </template>
 
 <style scoped>
-
 .title {
     text-align: center;
     font-size: 700;
@@ -82,6 +78,4 @@ const disableSubmit = computed(() => {
     font-size: medium;
     font-weight: 600;
 }
-
-
 </style>

@@ -1,9 +1,11 @@
 <template>
-    <div class="sheet-wrapper">
-        <div class="sheet">
-            <slot />
+    <main style="background-color: ghostwhite; height: 100vh">
+        <div class="sheet-wrapper">
+            <div class="sheet">
+                <slot />
+            </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <style scoped>
@@ -18,7 +20,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-.sheet-wrapper{
+.sheet-wrapper {
     height: 100%;
     width: 100%;
     display: flex;
