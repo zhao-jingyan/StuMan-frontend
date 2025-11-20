@@ -50,8 +50,10 @@ watch(
         <div class="header-right">
             <a-input-search v-if="false" enter-button placeholder="search for"></a-input-search>
             <a-button size="medium">
-                <LogoutOutlined style="padding-right: 7px;" />
-                <a style="font-weight: 500;">LogOut</a>
+                <div style="display:flex; flex-direction:row; gap:8px; align-items: center;">
+                    <LogoutOutlined />
+                    <div style="font-weight: 500;">LogOut</div>
+                </div>
             </a-button>
             <a-avatar size="medium" src="" style="flex-shrink: 0">
                 User
