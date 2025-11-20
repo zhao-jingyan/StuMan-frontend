@@ -1,10 +1,15 @@
 <script setup>
+import { ref } from 'vue';
 import MyHeader from '@/components/global/MyHeader.vue';
 import MySider from '@/components/global/MySider.vue'
 
 const props = defineProps(['showHeader', 'showSider']);
 
+const siderFoldStatus = ref('false')
 
+const toggleSiderStatus = () => {
+    siderFoldStatus.value = !siderFoldStatus.value;
+}
 </script>
 
 <template>
@@ -13,8 +18,8 @@ const props = defineProps(['showHeader', 'showSider']);
     </a-layout-header>
 
     <a-layout class="remain">
-        <a-layout-sider width=336 class="sider" v-if="showSider !== false">
-            <MySider>
+        <a-layout-sider :width="siderFoldStatus ? '336px' : '80px'" class="sider" v-if="showSider !== false">
+            <MySider @toggle-sider-status="toggleSiderStatus">
                 <slot name="sider"></slot>
             </MySider>
         </a-layout-sider>
