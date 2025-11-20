@@ -1,10 +1,8 @@
 import LoginPage from '@/views/LoginPage.vue';
 import SignUpPage from '@/views/SignUpPage.vue';
-import ClassesList from '@/main/ClassesList.vue';
+import ProfilePage from '@/views/ProfilePage.vue';
+import ManagePage from '@/views/ManagePage.vue';
 import Home from '@/views/Home.vue';
-import StudentsList from '@/main/StudentsList.vue';
-import EditProfile from '@/profile/EditProfile.vue';
-import ProfileView from '@/profile/ProfileView.vue';
 import { createWebHistory, createRouter } from 'vue-router'
 
 const isAuthenticated = true;
@@ -30,37 +28,17 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'Profile',
-      component: ProfileView
+      component: ProfilePage
     },
-    {
-      path: '/profile/edit',
-      name: "EditProfile",
-      component: EditProfile
-    },
-    {
-      path: '/classes/:classNum/students/:studentId/edit',
-      name: 'TeacherEdit',
-      component: EditProfile
+    { path: '/manage',
+      name: "Manage",
+      component: ManagePage
     },
     {
       path: '/:pathMatch(.*)*', // 匹配所有路径
       redirect: '/'
     },
-    {
-      path: '/classes/:classNum/students',
-      name: 'Students',
-      component: StudentsList
-    },
-    {
-      path: '/classes/:classNum/students/:studentId',
-      name: 'ManageProfile',
-      component: ProfileView
-    },
-    {
-      path: '/classes',
-      name: "Classes",
-      component: ClassesList
-    }
+
   ],
 })
 
