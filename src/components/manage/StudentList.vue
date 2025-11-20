@@ -38,7 +38,7 @@ const calcBackColor = (ID) => {
 </script>
 
 <template>
-    <div style="padding: 64px 128px">
+    <div style="padding: 72px 128px">
         <a-list item-layout="horizontal" style="border-radius:16px; 
                         background-color: white; 
                         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
