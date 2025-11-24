@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 
 import { ref, computed } from 'vue';
 import router from '@/router/router';

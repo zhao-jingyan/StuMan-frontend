@@ -1,6 +1,5 @@
-<script lang="ts" setup>
+<script setup>
 import router from '@/router/router'
-import type { UserInfo } from '@/types/index'
 import { ref, onMounted, computed } from 'vue'
 import { createRouter, useRoute } from 'vue-router';
 import { dataService } from '@/services/dataService';
@@ -9,9 +8,9 @@ import { userService } from '@/services/userService';
 
 const route = useRoute();
 
-const classNum: string = route.params.classNum as string;
+const classNum = route.params.classNum;
 
-const data = ref<UserInfo[]>([]);
+const data = ref([]);
 
 onMounted(() => {
     data.value = dataService.fetchStudents(classNum);

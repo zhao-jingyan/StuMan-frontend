@@ -1,4 +1,3 @@
-import type { UserInfo, LoginInfo, ClassInfo } from "@/types"
 import { mock } from "./mockData";
 
 export const dataService = {
@@ -7,17 +6,17 @@ export const dataService = {
     fetchClasses
 }
 
-function fetchProfile(id : string) {
+function fetchProfile(id) {
     console.log("using mockUserData");
     return mock.mockUserData;
 }
 
-function fetchStudents(classid : string) {
+function fetchStudents(classid) {
     console.log("using mockStudentsList");
     return mock.mockStudentList;
 }
 
-function fetchClasses(teacherid : string) {
+function fetchClasses(teacherid) {
     console.log("using mockClassList");
     return mock.mockClassList;
 }

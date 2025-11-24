@@ -1,6 +1,4 @@
-import { ClassInfo, UserInfo,  } from "@/types"
-
-const mockClassList: ClassInfo[] = [
+const mockClassList = [
     {
        id: "1",
        count: 23, 
@@ -15,7 +13,7 @@ const mockClassList: ClassInfo[] = [
     }
 ]
 
-const mockStudentList: UserInfo[] = [
+const mockStudentList = [
     {
         id: "1",
         name: "Test Name",
@@ -162,7 +160,7 @@ const mockStudentList: UserInfo[] = [
     },
 ]
 
-const mockUserData: UserInfo = {
+const mockUserData = {
     id: "1",
     name: "Test Name",
     nickname: "nick",

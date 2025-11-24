@@ -1,5 +1,3 @@
-import type { UserInfo, LoginInfo } from "@/types"
-
 export const userService = {
     register,
     login,
@@ -10,7 +8,7 @@ export const userService = {
     deleteStudent
 }
 
-async function login(info: LoginInfo) {
+async function login(info) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,7 +19,7 @@ async function login(info: LoginInfo) {
     return handleResponse(response);
 }
 
-async function register(user: UserInfo) {
+async function register(user) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,11 +30,11 @@ async function register(user: UserInfo) {
     return handleResponse(response);
 }
 
-async function editProfile(user: UserInfo) {
+async function editProfile(user) {
 
 }
 
-async function _delete(id: string) {
+async function _delete(id) {
     const requestOptions = {
         method: 'DELETE',
         headers: authHeader(), //和登录状态相关
