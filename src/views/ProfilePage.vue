@@ -1,17 +1,16 @@
 <script setup>
 import MainLayout from '@/layouts/MainLayout.vue';
-import ProfileView from '@/components/profile/ProfileView.vue';
-import SheetLayout from '@/layouts/SheetLayout.vue';
+import ProfileCard from '@/components/profile/ProfileCard.vue';
+
+import { createRouter, useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <template>
     <MainLayout :show-sider="false">
         <template #main>
-            <p>text</p>
+            <ProfileCard></ProfileCard>
         </template>
     </MainLayout>
 </template>
-
-<style scoped>
-
-</style>

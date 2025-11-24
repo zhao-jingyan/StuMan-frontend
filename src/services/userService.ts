@@ -6,7 +6,8 @@ export const userService = {
     editProfile,
     _delete,
     logout,
-    newClass
+    newClass,
+    deleteStudent
 }
 
 async function login(info: LoginInfo) {
@@ -55,6 +56,12 @@ async function newClass() {
     const response = await fetch(`https://mockurl:4000/classes/new`,requestOptions);
     return handleResponse(response);
 }
+
+async function deleteStudent(studentId) {
+    return null;
+}
+
+
 async function logout(){
 
 }

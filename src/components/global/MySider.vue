@@ -36,7 +36,7 @@ const calcColor = computed(() => {
             </div>
             <Transition>
                 <div v-if="showFullSider === true">
-                    <slot />
+                    <slot></slot>
                 </div>
             </Transition>
         </div>
