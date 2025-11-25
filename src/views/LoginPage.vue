@@ -3,6 +3,7 @@
 import { ref, computed } from 'vue';
 import router from '@/router/router';
 import SheetLayout from '@/layouts/SheetLayout.vue';
+import { userService } from '@/services/userService';
 
 
 const loginInfo = ref({
@@ -11,12 +12,7 @@ const loginInfo = ref({
 })
 
 const onSubmit = () => {
-    /* a console test logic */
-    console.log('----------------------');
-    console.log('submit!');
-    console.log('id:' + loginInfo.value.id);
-    console.log('password:' + loginInfo.value.password);
-    console.log('----------------------');
+    userService.login(loginInfo.value.id, loginInfo.value.password)
 }
 
 const onSignup = () => {
@@ -24,7 +20,7 @@ const onSignup = () => {
 }
 
 const onForgotPassword = () => {
-
+    alert("idk either")
 }
 
 const disableSubmit = computed(() => {
