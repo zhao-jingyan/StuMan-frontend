@@ -27,7 +27,9 @@ async function login(id, password) {
 
         if(data && data.success) {
             const token = data.token;
+            console.log("login success! data from server:" + JSON.stringify(data))
             localStorage.setItem('authToken', token);
+            router.push('/manage/1');
         }
         else {
             alert("Id or password incorrect! Please retry!")
@@ -83,7 +85,7 @@ async function deleteStudent(studentId) {
 
 
 function logout() {
-    //localStorage.removeItem('authToken');
+    localStorage.removeItem('authToken');
     router.push('/login');
 }
 
